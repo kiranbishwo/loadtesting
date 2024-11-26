@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Test Results</title>
+</head>
+<body>
+    <h1>Load Test Results</h1>
+    {% if results %}
+        <p>Total Requests: {{ results.total_requests }}</p>
+        <p>Concurrent Requests: {{ results.concurrent_requests }}</p>
+        <p>Duration: {{ results.duration }} seconds</p>
+        <p>Average Requests Per Second: {{ results.average_requests_per_second }}</p>
+        <h2>Status Codes:</h2>
+        <ul>
+        {% for code, count in results.status_codes.items() %}
+            <li>{{ code }}: {{ count }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results yet. Start a test first.</p>
+    {% endif %}
+</body>
+</html>
